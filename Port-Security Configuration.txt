@@ -1,0 +1,465 @@
+Port-Security Configuration
+
+Switch
+
+Switch>en
+Switch#sh port-security f0/1
+                        ^
+% Invalid input detected at '^' marker.
+	
+Switch#sh port-security in f0/1
+Port Security              : Disabled
+Port Status                : Secure-down
+Violation Mode             : Shutdown
+Aging Time                 : 0 mins
+Aging Type                 : Absolute
+SecureStatic Address Aging : Disabled
+Maximum MAC Addresses      : 1
+Total MAC Addresses        : 0
+Configured MAC Addresses   : 0
+Sticky MAC Addresses       : 0
+Last Source Address:Vlan   : 0000.0000.0000:0
+Security Violation Count   : 0
+Switch#
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#in f0/1
+Switch(config-if)#switc
+Switch(config-if)#switchport port
+Switch(config-if)#switchport port-security 
+Command rejected: FastEthernet0/1 is a dynamic port.
+Switch(config-if)#
+Switch(config-if)#switch
+Switch(config-if)#switchport mode acc
+Switch(config-if)#switchport mode access 
+Switch(config-if)#switchport port-security 
+Switch(config-if)#
+Switch(config-if)#exit
+Switch(config)#
+Switch(config)#do sh po
+Switch(config)#do sh por
+Switch(config)#do sh port-security in f0/1
+Port Security              : Enabled
+Port Status                : Secure-up
+Violation Mode             : Shutdown
+Aging Time                 : 0 mins
+Aging Type                 : Absolute
+SecureStatic Address Aging : Disabled
+Maximum MAC Addresses      : 1
+Total MAC Addresses        : 0
+Configured MAC Addresses   : 0
+Sticky MAC Addresses       : 0
+Last Source Address:Vlan   : 0000.0000.0000:0
+Security Violation Count   : 0
+
+Switch(config)#do sh port-security in f0/1
+Port Security              : Enabled
+Port Status                : Secure-up
+Violation Mode             : Shutdown
+Aging Time                 : 0 mins
+Aging Type                 : Absolute
+SecureStatic Address Aging : Disabled
+Maximum MAC Addresses      : 1
+Total MAC Addresses        : 1
+Configured MAC Addresses   : 0
+Sticky MAC Addresses       : 0
+Last Source Address:Vlan   : 0050.0F9D.AD76:1
+Security Violation Count   : 0
+
+Switch(config)#
+%LINK-3-UPDOWN: Interface FastEthernet0/1, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to down
+
+%LINK-5-CHANGED: Interface FastEthernet0/1, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+
+%LINK-5-CHANGED: Interface FastEthernet0/1, changed state to administratively down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to down
+
+Switch(config)#do sh port-security in f0/1
+Port Security              : Enabled
+Port Status                : Secure-shutdown
+Violation Mode             : Shutdown
+Aging Time                 : 0 mins
+Aging Type                 : Absolute
+SecureStatic Address Aging : Disabled
+Maximum MAC Addresses      : 1
+Total MAC Addresses        : 0
+Configured MAC Addresses   : 0
+Sticky MAC Addresses       : 0
+Last Source Address:Vlan   : 0050.0F9D.AD76:1
+Security Violation Count   : 1
+
+Switch(config)#
+Switch(config)#
+Switch(config)#do sh in br
+sh in br
+      ^
+% Invalid input detected at '^' marker.
+	
+Switch(config)#in f0/1
+Switch(config-if)#no sh
+
+%LINK-5-CHANGED: Interface FastEthernet0/1, changed state to down
+Switch(config-if)#
+Switch(config-if)#sh
+
+%LINK-5-CHANGED: Interface FastEthernet0/1, changed state to administratively down
+Switch(config-if)#no sh
+
+Switch(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/1, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#switch
+Switch(config-if)#switchport por
+Switch(config-if)#switchport port-security vio
+Switch(config-if)#switchport port-security violation ?
+  protect   Security violation protect mode
+  restrict  Security violation restrict mode
+  shutdown  Security violation shutdown mode
+Switch(config-if)#switchport port-security violation res
+Switch(config-if)#switchport port-security violation restrict 
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#do sh po in f0/1
+Port Security              : Enabled
+Port Status                : Secure-up
+Violation Mode             : Restrict
+Aging Time                 : 0 mins
+Aging Type                 : Absolute
+SecureStatic Address Aging : Disabled
+Maximum MAC Addresses      : 1
+Total MAC Addresses        : 1
+Configured MAC Addresses   : 0
+Sticky MAC Addresses       : 0
+Last Source Address:Vlan   : 0050.0F9D.AD76:1
+Security Violation Count   : 0
+
+Switch(config-if)#
+
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#in f0/1
+Switch(config-if)#swi
+Switch(config-if)#switchport mode acc
+Switch(config-if)#switchport mode access 
+Switch(config-if)#swit
+Switch(config-if)#switchport port
+Switch(config-if)#switchport port-security mac
+Switch(config-if)#switchport port-security mac-address 0050.0F9D.AD76
+Port-security not enabled on interface FastEthernet0/1.
+Switch(config-if)#switchport port-security
+Switch(config-if)#switchport port-security mac-address 0050.0F9D.AD76
+Switch(config-if)#
+Switch(config-if)#switchport port-security vio
+Switch(config-if)#switchport port-security violation ?
+  protect   Security violation protect mode
+  restrict  Security violation restrict mode
+  shutdown  Security violation shutdown mode
+Switch(config-if)#switchport port-security violation pro
+Switch(config-if)#switchport port-security violation protect 
+Switch(config-if)#
+Switch(config-if)#
+%LINK-3-UPDOWN: Interface FastEthernet0/1, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to down
+
+%LINK-5-CHANGED: Interface FastEthernet0/1, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+
+Switch(config-if)#do sh po
+Switch(config-if)#do sh por
+Switch(config-if)#do sh port-security in f0/1
+Port Security              : Enabled
+Port Status                : Secure-up
+Violation Mode             : Protect
+Aging Time                 : 0 mins
+Aging Type                 : Absolute
+SecureStatic Address Aging : Disabled
+Maximum MAC Addresses      : 1
+Total MAC Addresses        : 1
+Configured MAC Addresses   : 1
+Sticky MAC Addresses       : 0
+Last Source Address:Vlan   : 0050.0F9D.AD76:1
+Security Violation Count   : 0
+
+Switch(config-if)#
+
+Switch#
+Switch#
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#in r f0/3-6
+Switch(config-if-range)#swi
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#swi
+Switch(config-if-range)#switchport por
+Switch(config-if-range)#switchport port-security 
+Switch(config-if-range)#swi
+Switch(config-if-range)#switchport por
+Switch(config-if-range)#switchport port-security mac
+Switch(config-if-range)#switchport port-security mac-address sti
+Switch(config-if-range)#switchport port-security mac-address sticky 
+Switch(config-if-range)#
+Switch(config-if-range)#exit
+Switch(config)#do sh run
+Building configuration...
+Current configuration : 1612 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Switch
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ switchport mode access
+ switchport port-security
+ switchport port-security violation protect 
+ switchport port-security mac-address 0050.0F9D.AD76
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+!
+interface FastEthernet0/4
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+!
+interface FastEthernet0/5
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+!
+interface FastEthernet0/6
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+!
+!
+!
+line con 0
+!
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+!
+!
+!
+end
+
+Switch(config)#do sh run
+Building configuration...
+
+Current configuration : 1852 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Switch
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ switchport mode access
+ switchport port-security
+ switchport port-security violation protect 
+ switchport port-security mac-address 0050.0F9D.AD76
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0002.4AB3.07CD
+!
+interface FastEthernet0/4
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0060.478D.6C82
+!
+interface FastEthernet0/5
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0001.43CD.43B0
+!
+interface FastEthernet0/6
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 000C.CF73.4E26
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+
+Switch(config)#
+Switch(config)#do sh star
+startup-config is not present
+Switch(config)#wr
+               ^
+% Invalid input detected at '^' marker.
+	
+Switch(config)#
+Switch(config)#do sh star
+startup-config is not present
+Switch(config)#exit
+Switch#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Switch#wr
+Building configuration...
+[OK]
+Switch#
+Switch#sh star
+Switch#sh startup-config 
+Using 1852 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Switch
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ switchport mode access
+ switchport port-security
+ switchport port-security violation protect 
+ switchport port-security mac-address 0050.0F9D.AD76
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0002.4AB3.07CD
+!
+interface FastEthernet0/4
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0060.478D.6C82
+!
+interface FastEthernet0/5
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0001.43CD.43B0
+!
+interface FastEthernet0/6
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 000C.CF73.4E26
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+
+Switch#
